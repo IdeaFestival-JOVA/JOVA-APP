@@ -4,81 +4,80 @@ import 'package:flutter/material.dart';
 class BestwritingContainer extends StatelessWidget {
   final String title;
   final String body;
+  final String post_title;
+
   const BestwritingContainer({
     super.key,
     required this.title,
     required this.body,
+    required this.post_title,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
+    return Expanded(
         flex: 3,
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: SizedBox(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 32,
-                  ),
+        child: Column(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 32,
                 ),
-                Container(
-                  width: 500,
-                  height: 180,
+              ),
+            ),
+            Expanded(
+                flex: 3,
+                child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
                     color: Colors.white,
+                    borderRadius: BorderRadius.circular(40),
                   ),
                   child: Row(
                     children: [
                       Expanded(
-                        flex : 1,
-                        child:Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "asset/image/joavlogo.png",
-                              width: 200,
-                            ),
-                          ],
-                        ),
+                        flex: 1,
+                        child: Image.asset('asset/image/joavlogo.png'),
                       ),
                       Expanded(
-                        flex: 2,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "test1",
-                              style: TextStyle(
-                                fontSize: 50,
+                          flex: 2,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: Text(
+                                  post_title,
+                                  style: const TextStyle(
+                                    fontSize: 24
+                                  ),
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 30,),
-                            Text(
-                              body.length > 10 ?
-                              '${body.substring(0, 10)}...' : body,
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.grey[700],
+                              const Expanded(
+                                  flex: 1,
+                                  child: SizedBox(),
                               ),
-                            )
-                          ],
-                        ),
-                      ),
+                              Expanded(
+                                flex: 1,
+                                child: Text(
+                                  body,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                      fontSize: 16
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                      )
                     ],
                   ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-    }
+                )
+            )
+          ],
+        )
+    );
   }
+}
