@@ -1,20 +1,72 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:jovajovajova/screens/joboffer_screen.dart';
+import 'package:jovajovajova/screens/jobsearch_screen.dart';
 import 'package:jovajovajova/screens/main_screen.dart';
+import 'package:jovajovajova/screens/myprofile_screen.dart';
+import 'package:jovajovajova/screens/notification_screen.dart';
+import 'package:jovajovajova/widget/top_container.dart';
+import 'package:jovajovajova/widget/bestwriting_container.dart';
 
 void main(){
-  runApp(MainScreen());
+  runApp(const Main());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+
+
+class Main extends StatefulWidget {
+  const Main({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<Main> createState() => _Main();
 }
 
-class _MyAppState extends State<MyApp> {
+class _Main extends State<Main> {
+
+  bool jobofferclick = false;
+  bool jobsearchclick = false;
+  bool myprofileclick = false;
+
+  void ButtonClickState(bool onclick){
+    setState(() {
+      onclick = !onclick;
+    });
+  }
+
+  var _index = 2;
+
+  List<Widget> _pages = [
+    JobofferScreen(),
+    JobsearchScreen(),
+    MainScreen(),
+    MyprofileScreen(),
+    NotificationScreen()
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+          backgroundColor: Colors.grey[300],
+          body: _pages[_index],
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _index,
+            onTap: (value) {
+              setState(() {
+                _index = value;
+              });
+            },
+            items:const [
+              BottomNavigationBarItem(icon: Icon(Icons.person_search)),
+              BottomNavigationBarItem(icon: Icon(Icons.assignment)),
+              BottomNavigationBarItem(icon: Icon(Icons.home)),
+              BottomNavigationBarItem(icon: Icon(Icons.person)),
+              BottomNavigationBarItem(icon: Icon(Icons.campaign))
+            ],
+            selectedItemColor: Colors.purple,
+            unselectedItemColor: Colors.black,
+          )
+      ),
+    );
   }
 }
