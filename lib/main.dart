@@ -57,11 +57,11 @@ class _Main extends State<Main> {
               });
             },
             items:const [
-              BottomNavigationBarItem(icon: Icon(Icons.person_search)),
-              BottomNavigationBarItem(icon: Icon(Icons.assignment)),
-              BottomNavigationBarItem(icon: Icon(Icons.home)),
-              BottomNavigationBarItem(icon: Icon(Icons.person)),
-              BottomNavigationBarItem(icon: Icon(Icons.campaign))
+              BottomNavigationBarItem(icon: Icon(Icons.person_search),label: ""),
+              BottomNavigationBarItem(icon: Icon(Icons.assignment),label: ""),
+              BottomNavigationBarItem(icon: Icon(Icons.home),label: ""),
+              BottomNavigationBarItem(icon: Icon(Icons.person),label: ""),
+              BottomNavigationBarItem(icon: Icon(Icons.campaign),label: "")
             ],
             selectedItemColor: Colors.purple,
             unselectedItemColor: Colors.black,
