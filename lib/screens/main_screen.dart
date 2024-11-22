@@ -25,15 +25,6 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  var _index = 2;
-
-  List<Widget> _pages = [
-    JobofferScreen(),
-    JobsearchScreen(),
-    MainScreen(),
-    MyprofileScreen(),
-    NotificationScreen()
-  ];
 
   @override
   Widget build(BuildContext context) {
