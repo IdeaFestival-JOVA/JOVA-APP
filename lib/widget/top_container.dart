@@ -23,7 +23,7 @@ class TopContainer extends StatelessWidget {
                 Flexible(
                   flex: 1,
                   child: Image.asset(
-                    "asset/image/joavlogo.png",
+                    "asset/image/jovalogo.png",
                   ),
                 ),
                 const SizedBox(height: 20,),

@@ -39,7 +39,7 @@ class BestwritingContainer extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 1,
-                        child: Image.asset('asset/image/joavlogo.png'),
+                        child: Image.asset('asset/image/jovalogo.png'),
                       ),
                       Expanded(
                           flex: 2,
