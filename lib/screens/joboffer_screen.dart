@@ -30,11 +30,6 @@ class _JobofferScreenState extends State<JobofferScreen> {
           children: [
             TopContainer(),
             Positioned(
-              top: 30,
-              left: 0,
-              child: MainBackbutton(),
-            ),
-            Positioned(
                 top: 250,
                 left: 0,
                 child: JobSerach(),
