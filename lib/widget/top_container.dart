@@ -13,7 +13,7 @@ class TopContainer extends StatelessWidget {
           height: 350,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
-            color: const Color.fromRGBO(148,0,211,0.7),
+            color: Colors.black,
           ),
           child: Padding(
             padding: const EdgeInsets.all(20),
