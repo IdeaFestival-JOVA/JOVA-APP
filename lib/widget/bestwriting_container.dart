@@ -32,7 +32,7 @@ class BestwritingContainer extends StatelessWidget {
                 flex: 3,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.black,
                     borderRadius: BorderRadius.circular(40),
                   ),
                   child: Row(
