@@ -31,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.grey[300],
+        backgroundColor: Colors.white,
         body:  const Column(
           children: [
             TopContainer(),
