@@ -51,6 +51,7 @@ class BestwritingContainer extends StatelessWidget {
                                 child: Text(
                                   post_title,
                                   style: const TextStyle(
+                                    color: Colors.white,
                                     fontSize: 24
                                   ),
                                 ),
@@ -65,6 +66,7 @@ class BestwritingContainer extends StatelessWidget {
                                   body,
                                   overflow: TextOverflow.ellipsis,
                                   style: const TextStyle(
+                                    color: Colors.white,
                                       fontSize: 16
                                   ),
                                 ),
