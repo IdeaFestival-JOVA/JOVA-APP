@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class MyprofileScreen extends StatefulWidget {
   const MyprofileScreen({super.key});
@@ -10,6 +11,9 @@ class MyprofileScreen extends StatefulWidget {
 class _MyprofileScreenState extends State<MyprofileScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      home: Scaffold(
+      ),
+    );
   }
 }

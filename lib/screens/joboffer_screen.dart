@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jovajovajova/widget/top_container.dart';
 import 'package:jovajovajova/widget/main_backbutton.dart';
 import 'package:jovajovajova/widget/job_serach.dart';
 
@@ -13,26 +12,19 @@ class JobofferScreen extends StatefulWidget {
 
 class _JobofferScreenState extends State<JobofferScreen> {
 
-  bool jobofferclick = true;
-  bool jobsearchclick = false;
-
-  void ButtonClickState(bool onclick){
-    setState(() {
-      onclick = !onclick;
-    });
-  }
+  List<String> post = [];
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: Stack(
+        body: Column(
           children: [
-            TopContainer(),
-            Positioned(
-                top: 250,
-                left: 0,
-                child: JobSerach(),
+            Expanded(
+                flex: 1,
+                child: SearchBar(
+                  hintText: "검색을 입력하세요",
+                )
             ),
           ],
         ),

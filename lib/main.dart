@@ -4,7 +4,6 @@ import 'package:jovajovajova/screens/jobsearch_screen.dart';
 import 'package:jovajovajova/screens/main_screen.dart';
 import 'package:jovajovajova/screens/myprofile_screen.dart';
 import 'package:jovajovajova/screens/notification_screen.dart';
-import 'package:jovajovajova/widget/top_container.dart';
 import 'package:jovajovajova/widget/bestwriting_container.dart';
 
 void main(){
