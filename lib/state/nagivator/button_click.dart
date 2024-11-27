@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jovajovajova/screens/main_screen.dart';
-import '../../screens/joboffer_screen.dart';
-import '../../screens/jobsearch_screen.dart';
+import '../../screens/job_screen.dart';
 import '../../screens/myprofile_screen.dart';
 class ButtonAnimation{
   static AnimationController createController(TickerProvider vsync, {Duration duration = const Duration(seconds: 1)}) {
@@ -24,17 +23,10 @@ class ButtonAnimation{
   }
 }
 class ButtonActions {
-  static void jobSerachButton(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const JobsearchScreen()),
-    );
-  }
-
   static void jobOfferButton(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const JobofferScreen()),
+      MaterialPageRoute(builder: (context) => const JobScreen()),
     );
   }
 

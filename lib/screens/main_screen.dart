@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jovajovajova/screens/notification_screen.dart';
 import 'package:jovajovajova/widget/bestwriting_container.dart';
-import 'joboffer_screen.dart';
-import 'jobsearch_screen.dart';
+import 'job_screen.dart';
 import 'myprofile_screen.dart';
 
 class MainScreen extends StatefulWidget {

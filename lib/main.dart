@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jovajovajova/screens/joboffer_screen.dart';
-import 'package:jovajovajova/screens/jobsearch_screen.dart';
+import 'package:jovajovajova/screens/job_screen.dart';
+import 'package:jovajovajova/screens/job_screen.dart';
 import 'package:jovajovajova/screens/main_screen.dart';
 import 'package:jovajovajova/screens/myprofile_screen.dart';
 import 'package:jovajovajova/screens/notification_screen.dart';
@@ -34,8 +34,7 @@ class _Main extends State<Main> {
   var _index = 2;
 
   List<Widget> _pages = [
-    JobofferScreen(),
-    JobsearchScreen(),
+    JobScreen(),
     MainScreen(),
     MyprofileScreen(),
     NotificationScreen()

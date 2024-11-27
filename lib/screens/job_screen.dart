@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:jovajovajova/widget/main_backbutton.dart';
 import 'package:jovajovajova/widget/job_serach.dart';
 
-class JobofferScreen extends StatefulWidget {
-  const JobofferScreen({super.key});
+class JobScreen extends StatefulWidget {
+  const JobScreen({super.key});
 
   @override
-  State<JobofferScreen> createState() => _JobofferScreenState();
+  State<JobScreen> createState() => _JobScreenState();
 }
 
-class _JobofferScreenState extends State<JobofferScreen> {
+class _JobScreenState extends State<JobScreen> {
 
   List<String> post = [];
 
