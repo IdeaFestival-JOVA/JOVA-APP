@@ -33,7 +33,7 @@ class _Main extends State<Main> {
 
   var _index = 2;
 
-  List<Widget> _pages = [
+  final List<Widget> _pages = [
     JobScreen(),
     MainScreen(),
     MyprofileScreen(),
@@ -45,7 +45,7 @@ class _Main extends State<Main> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          backgroundColor: Colors.grey[300],
+          backgroundColor: Colors.white,
           body: _pages[_index],
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: _index,
@@ -55,14 +55,13 @@ class _Main extends State<Main> {
               });
             },
             items:const [
-              BottomNavigationBarItem(icon: Icon(Icons.person_search),label: ""),
-              BottomNavigationBarItem(icon: Icon(Icons.assignment),label: ""),
               BottomNavigationBarItem(icon: Icon(Icons.home),label: ""),
+              BottomNavigationBarItem(icon: Icon(Icons.explore),label: ""),
+              BottomNavigationBarItem(icon: Icon(Icons.campaign),label: ""),
               BottomNavigationBarItem(icon: Icon(Icons.person),label: ""),
-              BottomNavigationBarItem(icon: Icon(Icons.campaign),label: "")
             ],
-            selectedItemColor: Colors.purple,
-            unselectedItemColor: Colors.black,
+            selectedItemColor: Colors.black,
+            unselectedItemColor: Colors.white,
           )
       ),
     );
