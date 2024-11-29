@@ -19,12 +19,8 @@ class MainAppbar extends StatelessWidget {
                   width: 70,
                 ),
             ),
-            const Flexible(
-              flex: 1,
-                child: SizedBox()
-            ),
             Flexible(
-              flex: 3,
+              flex: 2,
                 child: GestureDetector(
                   onTap: (){
                     Navigator.push(
@@ -33,7 +29,11 @@ class MainAppbar extends StatelessWidget {
                     );
                   },
                   child: Container(
-                    color: const Color(0x00C3C3C3),
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.grey[200],
+                    ),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
