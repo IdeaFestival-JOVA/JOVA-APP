@@ -29,6 +29,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -37,9 +38,9 @@ class _SearchScreenState extends State<SearchScreen> {
           title: Row(
             children: [
               IconButton(
-                icon: Icon(Icons.arrow_back, color: Colors.black),
+                icon: const Icon(Icons.arrow_back, color: Colors.black),
                 onPressed: () {
-                  Navigator.pop(context); // 이전 화면으로 돌아가기
+                  Navigator.pop(context);
                 },
               ),
               Expanded(
