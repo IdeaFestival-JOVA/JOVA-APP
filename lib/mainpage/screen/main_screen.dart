@@ -4,7 +4,7 @@ import 'package:jovajovajova/screens/notification_screen.dart';
 import 'package:jovajovajova/screens/search_screen.dart';
 import 'package:jovajovajova/mainpage/widget/main_container.dart';
 import '../../screens/job_screen.dart';
-import '../../screens/myprofile_screen.dart';
+import '../../myprofile_page/screen/myprofile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
