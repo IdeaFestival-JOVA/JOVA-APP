@@ -4,14 +4,10 @@ import 'package:jovajovajova/mainpage/widget/list_post_widget.dart';
 
 class MainContainer extends StatelessWidget {
   final String title;
-  final String body;
-  final String post_title;
 
   MainContainer({
     super.key,
     required this.title,
-    required this.body,
-    required this.post_title,
   });
 
   List<String> list = [
