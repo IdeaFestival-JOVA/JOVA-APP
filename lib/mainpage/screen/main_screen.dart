@@ -43,14 +43,14 @@ class _MainScreenState extends State<MainScreen> {
               Flexible(
                   flex: 3,
                   child: MainContainer(
-                    title: "구인구직", body: "이런 친구를 굉장히 좋아합니다람쥐ㅇㅇㅇ",post_title: "플러터 개발자",
+                    title: "구인구직",
                   ),
               ),
               const SizedBox(height: 30),
               Flexible(
                 flex: 3,
                 child: MainContainer(
-                  title: "공지", body: "하",post_title: "롤로노아 김동현 팀",
+                  title: "공지",
                 ),
               ),
             ],
