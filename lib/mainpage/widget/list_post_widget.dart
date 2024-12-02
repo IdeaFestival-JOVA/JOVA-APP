@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:jovajovajova/post_screen.dart';
 
 class ListPostWidget extends StatelessWidget {
   const ListPostWidget({
@@ -13,23 +15,30 @@ class ListPostWidget extends StatelessWidget {
   final String title;
   final String deadline;
 
+  Widget textstyle(String text){
+    return Text(
+      text,
+      style: const TextStyle(
+        color: Colors.black,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 100,
-      height: 20,
+    return TextButton(
+      onPressed: (){
+        Navigator.push(
+            context, 
+            MaterialPageRoute(builder: (context) => PostScreen())
+        );
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-              author,
-          ),
-          Text(
-            title,
-          ),
-          Text(
-            deadline,
-          ),
+          textstyle(author),
+          textstyle(title),
+          textstyle(deadline),
         ],
       ),
     );
