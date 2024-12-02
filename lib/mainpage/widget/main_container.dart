@@ -31,6 +31,18 @@ class MainContainer extends StatelessWidget {
         const SizedBox(height: 20,),
         Expanded(
           child: Container(
+            padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.grey[100],
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 3,
+                  ),
+                ]
+              ),
               child: ListView(
                 children: [
                   ListPostWidget(
