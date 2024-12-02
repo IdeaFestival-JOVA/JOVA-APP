@@ -33,16 +33,18 @@ class MainContainer extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20,),
-        Container(
-            child: ListView(
-              children: [
-                ListPostWidget(
-                    author: "이주언",
-                    title: "디자인 모집",
-                    deadline: "2024.12.25",
-                ),
-              ],
-            ),
+        Expanded(
+          child: Container(
+              child: ListView(
+                children: [
+                  ListPostWidget(
+                      author: "이주언",
+                      title: "디자인 모집",
+                      deadline: "2024.12.25",
+                  ),
+                ],
+              ),
+          ),
         )
       ],
     );
