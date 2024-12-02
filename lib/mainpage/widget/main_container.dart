@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jovajovajova/mainpage/widget/list_post_widget.dart';
 
 class MainContainer extends StatelessWidget {
   final String title;
@@ -33,6 +34,15 @@ class MainContainer extends StatelessWidget {
         ),
         const SizedBox(height: 20,),
         Container(
+            child: ListView(
+              children: [
+                ListPostWidget(
+                    author: "이주언",
+                    title: "디자인 모집",
+                    deadline: "2024.12.25",
+                ),
+              ],
+            ),
         )
       ],
     );
