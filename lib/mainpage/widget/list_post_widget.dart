@@ -20,6 +20,7 @@ class ListPostWidget extends StatelessWidget {
       text,
       style: const TextStyle(
         color: Colors.black,
+        fontSize: 18,
       ),
     );
   }
