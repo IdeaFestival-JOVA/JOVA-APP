@@ -62,26 +62,32 @@ class _JobScreenState extends State<JobScreen> {
               child: MainAppbar()
           ),
           backgroundColor: Colors.white,
-          body: Column(
-            children: [
-              Expanded(
-                child: ListView.separated(
-                    itemBuilder: (BuildContext context,int index){
-                      return JobListPost(
-                        day: day_list[index],
-                        title: title_list[index],
-                        author: author_list[index],
-                        deadline: deadline_list[index],
-                      );
-                    },
-                    itemCount: day_list.length,
-                  separatorBuilder: (BuildContext context,int index){
-                      return const Divider();
+          body: ListView.separated(
+                  itemBuilder: (BuildContext context,int index){
+                    return JobListPost(
+                      day: day_list[index],
+                      title: title_list[index],
+                      author: author_list[index],
+                      deadline: deadline_list[index],
+                    );
                   },
-                ),
+                  itemCount: day_list.length,
+                separatorBuilder: (BuildContext context,int index){
+                    return const Divider();
+                },
               ),
-            ],
-          )
+          floatingActionButton: FloatingActionButton(
+            shape: CircleBorder(),
+            backgroundColor: Colors.grey,
+            onPressed: (){
+
+            },
+            child: Icon(
+                Icons.edit,
+              color: Colors.white,
+            ),
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         ),
       ),
     );
