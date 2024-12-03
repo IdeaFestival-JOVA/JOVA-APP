@@ -13,7 +13,7 @@ class JobScreen extends StatefulWidget {
 
 class _JobScreenState extends State<JobScreen> {
 
-  List<int> day_list = [1,2,3,4,5];
+  List<int> day_list = [1,2,3,4,5,6,7,8];
 
   List<String> title_list = [
     "Iot",
@@ -21,6 +21,9 @@ class _JobScreenState extends State<JobScreen> {
     "Back_End",
     "Front_End",
     "Flutter",
+    "ㅇㅇㅇㅇㅇ",
+    "ㅇㅇㅇㅇ",
+    "ㅇㅇㅇㅇ"
   ];
 
 
@@ -30,6 +33,9 @@ class _JobScreenState extends State<JobScreen> {
     "황지훈",
     "이상혁",
     "이주언",
+    "ㅇㅇㅇ",
+    "ㅇㅇㅇㅇ",
+    "ㅇㅇㅇㅇ",
   ];
 
   List<String> deadline_list = [
@@ -38,7 +44,10 @@ class _JobScreenState extends State<JobScreen> {
     "2024.5.5",
     "2024.4.4",
     "2024.7.29",
-    "2024.12.25"
+    "2024.12.25",
+    "14114",
+    "141434",
+    "4134134"
   ];
 
   @override
