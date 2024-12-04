@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:jovajovajova/jobpage/screen/job_write_screen.dart';
 import 'package:jovajovajova/jobpage/widget/job_list_post.dart';
 import 'package:jovajovajova/mainpage/widget/main_appbar.dart';
 
@@ -80,9 +81,12 @@ class _JobScreenState extends State<JobScreen> {
             shape: CircleBorder(),
             backgroundColor: Colors.grey,
             onPressed: (){
-
+                Navigator.push(
+                    context, 
+                    MaterialPageRoute(builder: (context) => JobWriteScreen())
+                );
             },
-            child: Icon(
+            child: const Icon(
                 Icons.edit,
               color: Colors.white,
             ),
