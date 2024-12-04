@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jovajovajova/jobpage/widget/job_write_main.dart';
+import 'package:jovajovajova/main.dart';
 
 class JobWriteScreen extends StatefulWidget {
   const JobWriteScreen({super.key});
@@ -11,6 +13,30 @@ class JobWriteScreen extends StatefulWidget {
 class _JobWriteScreenState extends State<JobWriteScreen> {
 
   DateTime initialDay = DateTime.now();
+  TextEditingController title_controller = TextEditingController();
+  TextEditingController main_controller = TextEditingController();
+  bool isButtonEnabled = false;
+
+  void _updateButtonState() {
+    setState(() {
+      isButtonEnabled =
+          main_controller.text.isNotEmpty && title_controller.text.isNotEmpty;
+    });
+  }
+
+  @override
+  void dispose(){
+    main_controller.dispose();
+    title_controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    main_controller.addListener(_updateButtonState);
+    title_controller.addListener(_updateButtonState);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,17 +63,13 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
         body: Padding(
           padding: const EdgeInsets.all(15),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const TextField(
-                decoration: InputDecoration(
-                  hintText: "제목을 입력해주세요",
-                  border: OutlineInputBorder(),
-                ),
-              ),
+              JobWriteMain(controller: title_controller, maxline: 1),
               SizedBox(height: 20,),
               Container(
                 decoration: BoxDecoration(
-                  border: Border.all()
+                    border: Border.all()
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,9 +77,9 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
                     IconButton(
                       onPressed:() async {
                         final DateTime? datetime = await showDatePicker(
-                            context: context,
-                            firstDate: DateTime.now(),
-                            lastDate: DateTime(2050),
+                          context: context,
+                          firstDate: DateTime.now(),
+                          lastDate: DateTime(2050),
                         );
                         if(datetime != null){
                           setState(() {
@@ -68,12 +90,35 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
                       icon: Icon(CupertinoIcons.calendar),
                     ),
                     Text(
-                      "${initialDay.year} - ${initialDay.month} - ${initialDay.day}"
+                        "${initialDay.year} - ${initialDay.month} - ${initialDay.day}"
                     ),
                     Text(
                       "마감날짜  ",
                     ),
                   ],
+                ),
+              ),
+              SizedBox(height: 20,),
+              JobWriteMain(controller: main_controller, maxline: 15,),
+              ElevatedButton(
+                  onPressed: (){
+                    if(isButtonEnabled){
+                      Navigator.pop(context);
+                    }
+                  },
+                  child: Text(
+                    "작성하기"
+                  ),
+                style: ButtonStyle(
+                  backgroundColor:
+                  isButtonEnabled ?
+                      MaterialStateProperty.all(
+                        Colors.green
+                      )
+                      :
+                      MaterialStateProperty.all(
+                        Colors.grey
+                      )
                 ),
               ),
             ],
