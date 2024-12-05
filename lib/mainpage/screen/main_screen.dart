@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jovajovajova/mainpage/widget/main_appbar.dart';
-import 'package:jovajovajova/screens/notification_screen.dart';
-import 'package:jovajovajova/screens/search_screen.dart';
 import 'package:jovajovajova/mainpage/widget/main_container.dart';
-import '../../jobpage/screen/job_screen.dart';
-import '../../myprofile_page/screen/myprofile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -13,19 +9,7 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
-
-  bool jobofferclick = false;
-  bool jobsearchclick = false;
-  bool myprofileclick = false;
-
-  void ButtonClickState(bool onclick){
-    setState(() {
-      onclick = !onclick;
-    });
-  }
-
-
+class _MainScreenState extends State<MainScreen> with ChangeNotifier {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -46,7 +30,7 @@ class _MainScreenState extends State<MainScreen> {
                     title: "구인구직",
                   ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 40),
               Flexible(
                 flex: 3,
                 child: MainContainer(
