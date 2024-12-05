@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:jovajovajova/jobpage/screen/job_screen.dart';
 import 'package:jovajovajova/jobpage/widget/job_write_main.dart';
-import 'package:jovajovajova/main.dart';
 
 class JobWriteScreen extends StatefulWidget {
   const JobWriteScreen({super.key});
@@ -13,6 +14,7 @@ class JobWriteScreen extends StatefulWidget {
 class _JobWriteScreenState extends State<JobWriteScreen> {
 
   DateTime initialDay = DateTime.now();
+  late String formattedDate = DateFormat('yyyy.MM.dd').format(initialDay);
   TextEditingController title_controller = TextEditingController();
   TextEditingController main_controller = TextEditingController();
   bool isButtonEnabled = false;
@@ -65,7 +67,7 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              JobWriteMain(controller: title_controller, maxline: 1),
+              JobWriteMain(controller: title_controller, maxline: 1,text: "제목",),
               SizedBox(height: 20,),
               Container(
                 decoration: BoxDecoration(
@@ -99,11 +101,18 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
                 ),
               ),
               SizedBox(height: 20,),
-              JobWriteMain(controller: main_controller, maxline: 15,),
+              JobWriteMain(controller: main_controller, maxline: 15,text: "내용",),
+              SizedBox(height: 20,),
               ElevatedButton(
                   onPressed: (){
                     if(isButtonEnabled){
-                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  JobScreen(title: title_controller,author: "익명",deadline: formattedDate,day: 1,)
+                          )
+                      );
                     }
                   },
                   child: Text(
