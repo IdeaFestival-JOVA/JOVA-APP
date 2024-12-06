@@ -11,9 +11,7 @@ class MyprofileScreen extends StatefulWidget {
 class _MyprofileScreenState extends State<MyprofileScreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-      ),
-    );
+    return Scaffold(
+      );
   }
 }

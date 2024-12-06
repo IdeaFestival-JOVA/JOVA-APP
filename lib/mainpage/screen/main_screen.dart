@@ -12,9 +12,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> with ChangeNotifier {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Padding(
+    return Padding(
         padding: const EdgeInsets.all(20),
         child: Scaffold(
           appBar: const PreferredSize(
@@ -40,7 +38,6 @@ class _MainScreenState extends State<MainScreen> with ChangeNotifier {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

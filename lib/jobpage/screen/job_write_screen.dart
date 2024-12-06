@@ -42,9 +42,7 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -114,6 +112,8 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
                           )
                       );
                     }
+                    else{
+                    }
                   },
                   child: Text(
                     "작성하기"
@@ -133,7 +133,6 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

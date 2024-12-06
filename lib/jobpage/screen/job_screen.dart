@@ -78,9 +78,7 @@ class _JobScreenState extends State<JobScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Padding(
+    return Padding(
         padding: const EdgeInsets.all(20),
         child: Scaffold(
           appBar: const PreferredSize(
@@ -118,7 +116,6 @@ class _JobScreenState extends State<JobScreen> {
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         ),
-      ),
-    );
+      );
   }
 }
