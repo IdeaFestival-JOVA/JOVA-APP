@@ -27,22 +27,20 @@ class ListPostWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: TextButton(
-        onPressed: (){
-          Navigator.push(
-              context, 
-              MaterialPageRoute(builder: (context) => PostScreen())
-          );
-        },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            textstyle(author),
-            textstyle(title),
-            textstyle(deadline),
-          ],
-        ),
+    return TextButton(
+      onPressed: (){
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PostScreen())
+        );
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          textstyle(author),
+          textstyle(title),
+          textstyle(deadline),
+        ],
       ),
     );
   }
