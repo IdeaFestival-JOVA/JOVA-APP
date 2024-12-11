@@ -3,15 +3,31 @@ import 'package:jovajovajova/jobpage/screen/job_screen.dart';
 import 'package:jovajovajova/login_screen.dart';
 import 'package:jovajovajova/mainpage/screen/main_screen.dart';
 import 'package:jovajovajova/myprofile_page/screen/myprofile_screen.dart';
+import 'package:jovajovajova/provider_class/addpost_provider.dart';
+import 'package:jovajovajova/provider_class/jobwrite_provider.dart';
 import 'package:jovajovajova/screens/notification_screen.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-Future<void> main() async {
+/*Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? accessToken = prefs.getString('accessToken');
 
   runApp(MyApp(accessToken: accessToken));
+}*/
+
+void main(){
+  runApp(
+    MultiProvider
+      (
+        providers: [
+          ChangeNotifierProvider(create: (_) => AddpostProvider()),
+          ChangeNotifierProvider(create: (_) => JobWriteProvider()),
+        ],
+      child: Main(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -54,26 +70,29 @@ class _MainState extends State<Main> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: _pages[_index],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        currentIndex: _index,
-        onTap: (value) {
-          setState(() {
-            _index = value;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "홈"),
-          BottomNavigationBarItem(icon: Icon(Icons.explore), label: "구인구직"),
-          BottomNavigationBarItem(icon: Icon(Icons.campaign), label: "공지"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "마이페이지"),
-        ],
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.black,
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+          backgroundColor: Colors.white,
+          body: _pages[_index],
+          bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.white,
+            currentIndex: _index,
+            onTap: (value) {
+              setState(() {
+                _index = value;
+              });
+            },
+            items: const [
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: "홈"),
+              BottomNavigationBarItem(icon: Icon(Icons.explore), label: "구인구직"),
+              BottomNavigationBarItem(icon: Icon(Icons.campaign), label: "공지"),
+              BottomNavigationBarItem(icon: Icon(Icons.person), label: "마이페이지"),
+            ],
+            selectedItemColor: Colors.black,
+            unselectedItemColor: Colors.black,
+          ),
+        ),
     );
   }
 }
