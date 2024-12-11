@@ -9,7 +9,7 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> with ChangeNotifier {
+class _MainScreenState extends State<MainScreen>{
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,18 +22,12 @@ class _MainScreenState extends State<MainScreen> with ChangeNotifier {
           backgroundColor: Colors.white,
           body:  Column(
             children: [
-              Flexible(
-                  flex: 3,
-                  child: MainContainer(
-                    title: "구인구직",
-                  ),
+              MainContainer(
+                title: "구인구직",
               ),
               const SizedBox(height: 40),
-              Flexible(
-                flex: 3,
-                child: MainContainer(
-                  title: "공지",
-                ),
+              MainContainer(
+                title: "공지",
               ),
             ],
           ),
