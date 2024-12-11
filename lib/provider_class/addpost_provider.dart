@@ -38,7 +38,6 @@ class AddpostProvider extends ChangeNotifier {
     if (deadline != null) {
       deadlineList.add(deadline);
     }
-    notifyListeners();
   }
 
   List<int?> getDayList() => dayList;
