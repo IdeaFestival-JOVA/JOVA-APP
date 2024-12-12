@@ -16,7 +16,7 @@ class _MainScreenState extends State<MainScreen>{
         padding: const EdgeInsets.all(20),
         child: Scaffold(
           appBar: const PreferredSize(
-              preferredSize: Size(200, 100),
+              preferredSize: Size(200, 80),
               child: MainAppbar(),
           ),
           backgroundColor: Colors.white,
