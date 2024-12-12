@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class JobWriteProvider extends ChangeNotifier {
   String title = '';
   String mainContent = '';
-  DateTime deadline = DateTime.now();
+  String deadline = '';
+  DateTime initialDay = DateTime.now();
   
   void updateTitle(String newTitle) {
     title = newTitle;
@@ -15,8 +16,13 @@ class JobWriteProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateDeadline(DateTime newDate) {
+  void updateDeadline(String newDate) {
     deadline = newDate;
+    notifyListeners();
+  }
+
+  void upadateday(DateTime newday){
+    initialDay = newday;
     notifyListeners();
   }
 

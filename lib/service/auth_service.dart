@@ -6,15 +6,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   static const String _baseUrl = "https://port-0-jova-backend-m0kvtwm45b2f2eb2.sel4.cloudtype.app";
-  static const String _authUrl = "$_baseUrl";
-  static const String _tokenUrl = "$_baseUrl/auth/login";
+  static const String _authUrl = "$_baseUrl/gauth/authorization";
+  static const String _loginUrl = "$_baseUrl/auth/login";
+  static const String _reissueUrl = "$_baseUrl/auth/reissue";
   static const String _redirectUrl = "$_baseUrl/gsm";
 
   /// OAuth 로그인 시작
   static Future<Map<String, String>> signInWithOAuth(BuildContext context) async {
     try {
       final code = await _getAuthorizationCode(context);
-      final tokens = await _getTokensFromCode(code);
+      final tokens = await _getTokensFromLogin(code);
       await _storeTokens(tokens);
       return tokens;
     } catch (e) {
@@ -38,6 +39,7 @@ class AuthService {
               if (url != null && url.toString().startsWith(_redirectUrl)) {
                 final uri = Uri.parse(url.toString());
                 code = uri.queryParameters['code'];
+                print("코드 입니다.${code}");
                 Navigator.of(context).pop();
               }
             },
@@ -54,15 +56,14 @@ class AuthService {
     return code!;
   }
 
-  /// Access Token과 Refresh Token 요청
-  static Future<Map<String, String>> _getTokensFromCode(String code) async {
+  /// 로그인: Access Token 및 Refresh Token 요청
+  static Future<Map<String, String>> _getTokensFromLogin(String code) async {
     final response = await http.post(
-      Uri.parse(_tokenUrl),
-      headers: {'Content-Type': 'application/json'},
+      Uri.parse(_loginUrl),
       body: jsonEncode({'code': code}),
     );
 
-    print('POST $_tokenUrl');
+    print('POST $_loginUrl');
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');
 
@@ -71,17 +72,57 @@ class AuthService {
       return {
         'accessToken': data['accessToken'],
         'refreshToken': data['refreshToken'],
+        'accessTokenExpiration': data['accessTokenExpiration'],
+        'refreshTokenExpiration': data['refreshTokenExpiration'],
       };
     } else {
-      throw Exception('토큰을 가져오지 못했습니다: ${response.body}');
+      throw Exception('로그인 실패: ${response.body}');
     }
   }
+
+  /// 토큰 재발급 요청
+  static Future<void> reissueTokens() async {
+    final prefs = await SharedPreferences.getInstance();
+    final refreshToken = prefs.getString('refreshToken');
+
+    if (refreshToken == null || refreshToken.isEmpty) {
+      throw Exception('저장된 Refresh Token이 없습니다.');
+    }
+
+    final response = await http.post(
+      Uri.parse(_reissueUrl),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({'refreshToken': refreshToken}),
+    );
+
+    print('POST $_reissueUrl');
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      final Map<String, String> newTokens = {
+        'accessToken': data['accessToken'],
+        'refreshToken': data['refreshToken'],
+        'accessTokenExpiration': data['accessTokenExpiration'],
+        'refreshTokenExpiration': data['refreshTokenExpiration'],
+      };
+
+      await _storeTokens(newTokens);
+      print('토큰 재발급 성공!');
+    } else {
+      throw Exception('토큰 재발급 실패: ${response.body}');
+    }
+  }
+
 
   /// Access Token과 Refresh Token 저장
   static Future<void> _storeTokens(Map<String, String> tokens) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('accessToken', tokens['accessToken'] ?? '');
     await prefs.setString('refreshToken', tokens['refreshToken'] ?? '');
+    await prefs.setString('accessTokenExpiration', tokens['accessTokenExpiration'] ?? '');
+    await prefs.setString('refreshTokenExpiration', tokens['refreshTokenExpiration'] ?? '');
   }
 
   /// 저장된 Access Token 가져오기
@@ -101,10 +142,11 @@ class AuthService {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('accessToken');
     await prefs.remove('refreshToken');
+    await prefs.remove('accessTokenExpiration');
+    await prefs.remove('refreshTokenExpiration');
   }
 }
 
-/// 로그인 후 페이지 이동 처리
 void signInAndNavigate(BuildContext context) async {
   try {
     final tokens = await AuthService.signInWithOAuth(context);

@@ -15,9 +15,6 @@ class JobWriteScreen extends StatefulWidget {
 }
 
 class _JobWriteScreenState extends State<JobWriteScreen> {
-  DateTime initialDay = DateTime.now();
-  late String formattedDate = DateFormat('yyyy.MM.dd').format(initialDay);
-
   @override
   Widget build(BuildContext context) {
     final addpost = Provider.of<AddpostProvider>(context, listen: false);
@@ -70,15 +67,14 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
                         lastDate: DateTime(2050),
                       );
                       if (datetime != null) {
-                        setState(() {
-                          initialDay = datetime;
-                        });
-                        jobWriteProvider.updateDeadline(initialDay);
+                        String formattedDate = DateFormat('yyyy.MM.dd').format(datetime);
+                        jobWriteProvider.upadateday(datetime);
+                        jobWriteProvider.updateDeadline(formattedDate);
                       }
                     },
                     icon: const Icon(CupertinoIcons.calendar),
                   ),
-                  Text("${initialDay.year} - ${initialDay.month} - ${initialDay.day}"),
+                  Text("${jobWriteProvider.initialDay.year} - ${jobWriteProvider.initialDay.month} - ${jobWriteProvider.initialDay.day}"),
                   const Text("마감날짜"),
                 ],
               ),
@@ -100,8 +96,11 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
                   day: 1,
                   title: jobWriteProvider.title,
                   author: "황지훈",
-                  deadline: formattedDate,
+                  deadline: jobWriteProvider.deadline,
                 );
+                print('테스트 마감 기한${addpost.deadlineList} ${addpost.dayList}');
+                jobWriteProvider.title = "";
+                jobWriteProvider.mainContent = "";
                 Navigator.pop(context);
               }
                   : null,

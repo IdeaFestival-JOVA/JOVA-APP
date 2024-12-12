@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class AddpostProvider extends ChangeNotifier {
-  List<int?> dayList = [1, 2, 3, 4, 5];
+  List<int> dayList = [1, 2, 3, 4, 5];
   List<String> titleList = [
     "Iot",
     "Design",

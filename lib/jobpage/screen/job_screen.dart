@@ -18,23 +18,26 @@ class JobScreen extends StatelessWidget {
           child: MainAppbar(),
         ),
         backgroundColor: Colors.white,
-        body: Consumer<AddpostProvider>(
-          builder: (context, provider, _) {
-            return ListView.separated(
-              itemCount: provider.getDayList().length,
-              itemBuilder: (BuildContext context, int index) {
-                return JobListPost(
-                  day: provider.getDayList()[index]!,
-                  title: provider.getTitleList()[index],
-                  author: provider.getAuthorList()[index],
-                  deadline: provider.getDeadlineList()[index],
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return const Divider();
-              },
-            );
-          },
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Consumer<AddpostProvider>(
+            builder: (context, provider, _) {
+              return ListView.separated(
+                itemCount: provider.getDayList().length,
+                itemBuilder: (BuildContext context, int index) {
+                  return JobListPost(
+                    day: provider.getDayList()[index]!,
+                    title: provider.getTitleList()[index],
+                    author: provider.getAuthorList()[index],
+                    deadline: provider.getDeadlineList()[index],
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return const Divider();
+                },
+              );
+            },
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           shape: CircleBorder(),
