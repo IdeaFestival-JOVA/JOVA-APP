@@ -4,6 +4,8 @@ import 'package:jovajovajova/myprofile_page/widget/major_listitem.dart';
 import 'package:jovajovajova/provider_class/addmajor_provider.dart';
 import 'package:provider/provider.dart';
 
+import 'major_list.dart';
+
 class MyprofileInformation extends StatelessWidget {
   const MyprofileInformation
       ({
@@ -75,29 +77,7 @@ class MyprofileInformation extends StatelessWidget {
                             fontWeight: FontWeight.w400,
                           ),
                         ),
-                        Consumer<Major>(
-                            builder: (context,provider,_){
-                              return SizedBox(
-                                width: double.infinity,
-                                height: 30,
-                                child: ListView.separated(
-                                  itemCount: provider.majorList.length,
-                                  physics: NeverScrollableScrollPhysics(),
-                                  scrollDirection: Axis.horizontal,
-                                  itemBuilder: (BuildContext context,int index){
-                                    return Padding(
-                                      padding: const EdgeInsets.only(right: 8),
-                                      child: MajorListitem(major: provider.majorList[index]),
-                                    );
-                                  },
-                                  separatorBuilder: (BuildContext context, int index) =>
-                                      Divider(
-                                        endIndent: 1,
-                                      ),
-                                ),
-                              );
-                            },
-                        ),
+                        MajorList(),
                       ],
                     ),
                   ),
@@ -128,4 +108,3 @@ class MyprofileInformation extends StatelessWidget {
     );
   }
 }
-
