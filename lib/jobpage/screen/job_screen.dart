@@ -41,7 +41,7 @@ class JobScreen extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           shape: CircleBorder(),
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.grey[400],
           onPressed: () {
             Navigator.push(
               context,
