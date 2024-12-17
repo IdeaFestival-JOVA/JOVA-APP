@@ -9,9 +9,18 @@ class MajorListitem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey,
-      child: Text(
-        major,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: Colors.grey[300]
+      ),
+      width: 60,
+      child: Center(
+        child: Text(
+          major,
+          style: TextStyle(
+            fontSize: 12,
+          ),
+        ),
       ),
     );
   }
