@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jovajovajova/main.dart';
+import 'package:jovajovajova/myprofile_page/screen/profile_information_modify.dart';
 import 'package:jovajovajova/myprofile_page/widget/major_listitem.dart';
 import 'package:jovajovajova/provider_class/addmajor_provider.dart';
 import 'package:provider/provider.dart';
@@ -23,9 +22,10 @@ class MyprofileInformation extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => Major(),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '기본 정보',
+            '기본 정보\n',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w600,
@@ -37,25 +37,27 @@ class MyprofileInformation extends StatelessWidget {
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
               border: Border.all(
-                width: 3,
+                width: 2,
                 color: Colors.grey,
-              )
+              ),
+              borderRadius: BorderRadius.circular(10)
             ),
             child: Column(
-                children: [
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                   Container(
                     alignment: Alignment.center,
                     child: Column(
                       children: [
                         Image.asset(
                           "asset/image/profile.png",
-                          width: 150,
-                          height: 150,
+                          width: 130,
+                          height: 130,
                         ),
                         Text(
                           name,
                           style: TextStyle(
-                            fontSize: 22,
+                            fontSize: 20,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -63,8 +65,8 @@ class MyprofileInformation extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    alignment: Alignment.centerLeft,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "깃허브\n${github}\n\nE-mail\n${email}\n\n전공",
@@ -74,23 +76,50 @@ class MyprofileInformation extends StatelessWidget {
                           ),
                         ),
                         Consumer<Major>(
-                          builder: (context,provider,_){
-                            return SizedBox(
-                              height: 30,
-                              child: ListView.builder(
-                                physics: NeverScrollableScrollPhysics(),
-                                scrollDirection: Axis.horizontal,
-                                itemCount: provider.majorList.length,
-                                itemBuilder: (BuildContext context,int index){
-                                  return MajorListitem(major: provider.majorList[index]);
-                                },
-                              ),
-                            );
-                          }
+                            builder: (context,provider,_){
+                              return SizedBox(
+                                width: double.infinity,
+                                height: 30,
+                                child: ListView.separated(
+                                  itemCount: provider.majorList.length,
+                                  physics: NeverScrollableScrollPhysics(),
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (BuildContext context,int index){
+                                    return Padding(
+                                      padding: const EdgeInsets.only(right: 8),
+                                      child: MajorListitem(major: provider.majorList[index]),
+                                    );
+                                  },
+                                  separatorBuilder: (BuildContext context, int index) =>
+                                      Divider(
+                                        endIndent: 1,
+                                      ),
+                                ),
+                              );
+                            },
                         ),
                       ],
                     ),
                   ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    FloatingActionButton(
+                        onPressed: (){
+                          Navigator.push(
+                              context, 
+                              MaterialPageRoute(builder: (context) => ProfileInformationModify()),
+                          );
+                        },
+                      shape: CircleBorder(),
+                      backgroundColor: Colors.grey[400],
+                      child: Icon(
+                        Icons.edit,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
                 ],
             ),
           )
