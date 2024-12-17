@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jovajovajova/mainpage/widget/main_appbar.dart';
-
 import '../widget/myprofile_information.dart';
 
 class MyprofileScreen extends StatefulWidget {
@@ -23,6 +22,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "마이 페이지",
@@ -36,6 +36,6 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
             ],
           ),
       ),
-      );
+    );
   }
 }
