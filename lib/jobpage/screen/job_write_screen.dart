@@ -24,6 +24,12 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
       resizeToAvoidBottomInset:false,
       backgroundColor: Colors.white,
       appBar: AppBar(
+        shape: Border(
+          bottom: BorderSide(
+            color: Colors.black,
+            width: 0.5,
+          )
+        ),
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
