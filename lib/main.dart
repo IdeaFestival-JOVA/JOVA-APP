@@ -5,7 +5,7 @@ import 'package:jovajovajova/mainpage/screen/main_screen.dart';
 import 'package:jovajovajova/myprofile_page/screen/myprofile_screen.dart';
 import 'package:jovajovajova/provider_class/addpost_provider.dart';
 import 'package:jovajovajova/provider_class/jobwrite_provider.dart';
-import 'package:jovajovajova/screens/notification_screen.dart';
+import 'package:jovajovajova/notification_page/notification_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -42,7 +42,13 @@ class MyApp extends StatelessWidget {
       initialRoute: accessToken != null ? '/home' : '/',
       routes: {
         '/': (context) => LoginPage(),
-        '/home': (context) => Main(),
+        '/home': (context) => MultiProvider(
+            providers: [
+              ChangeNotifierProvider(create: (_) => AddpostProvider()),
+              ChangeNotifierProvider(create: (_) => JobWriteProvider()),
+            ],
+          child: Main(),
+        ),
       },
       theme: ThemeData(
         useMaterial3: false,
@@ -64,13 +70,17 @@ class _MainState extends State<Main> {
   final List<Widget> _pages = [
     MainScreen(),
     JobScreen(),
-    MyprofileScreen(),
     NotificationScreen(),
+    MyprofileScreen(),
   ];
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        colorScheme: ColorScheme.light(
+          primary: Colors.white,
+        )
+      ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
           backgroundColor: Colors.white,
