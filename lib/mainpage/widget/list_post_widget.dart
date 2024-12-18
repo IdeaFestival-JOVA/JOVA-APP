@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jovajovajova/post_screen.dart';
+import 'package:jovajovajova/mainpage/widget/post_screen.dart';
 
 class ListPostWidget extends StatelessWidget {
   const ListPostWidget({
@@ -27,8 +27,7 @@ class ListPostWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: TextButton(
+    return TextButton(
         onPressed: (){
           Navigator.push(
               context,
@@ -48,7 +47,6 @@ class ListPostWidget extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }

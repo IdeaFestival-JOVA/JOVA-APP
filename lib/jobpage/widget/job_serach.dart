@@ -11,16 +11,10 @@ class JobSerach extends StatelessWidget {
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Expanded(
-            flex: 2,
-            child:SearchBar(
-              hintText: "입력",
-            ),
+          SearchBar(
+            hintText: "입력",
           ),
-          Expanded(
-              flex: 1,
-              child: Icon(Icons.search
-              )
+          Icon(Icons.search
           ),
         ],
       ),
