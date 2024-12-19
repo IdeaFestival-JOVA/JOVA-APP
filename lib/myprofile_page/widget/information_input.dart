@@ -33,6 +33,9 @@ class InformationInput extends StatelessWidget {
         SizedBox(height: 8,),
         TextField(
           decoration: InputDecoration(
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10)
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
             ),
