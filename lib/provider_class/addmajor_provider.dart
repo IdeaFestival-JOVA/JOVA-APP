@@ -12,6 +12,7 @@ class Major extends ChangeNotifier{
   void addmajor({String? major}){
     if(major != null){
       majorList.add(major);
+      majorList.toSet().toList();
     }
   }
 }
