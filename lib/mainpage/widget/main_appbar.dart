@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jovajovajova/screens/search_screen.dart';
 
-class MainAppbar extends StatelessWidget {
+class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
   const MainAppbar({super.key});
 
   @override
@@ -63,4 +63,7 @@ class MainAppbar extends StatelessWidget {
         ),
     );
   }
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }

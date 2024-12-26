@@ -15,6 +15,8 @@ class JobListPost extends StatelessWidget {
   final String author;
   final String deadline;
 
+
+
   @override
   Widget build(BuildContext context) {
     return Container(

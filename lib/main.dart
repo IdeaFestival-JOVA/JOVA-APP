@@ -5,7 +5,7 @@ import 'package:jovajovajova/mainpage/screen/main_screen.dart';
 import 'package:jovajovajova/myprofile_page/screen/myprofile_screen.dart';
 import 'package:jovajovajova/provider_class/addpost_provider.dart';
 import 'package:jovajovajova/provider_class/jobwrite_provider.dart';
-import 'package:jovajovajova/notification_page/notification_screen.dart';
+import 'package:jovajovajova/notification_page/screen/notification_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
