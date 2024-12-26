@@ -19,12 +19,6 @@ class ProfileInformationModify extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(CupertinoIcons.xmark),
-        ),
         title: Text(
           "회원정보 수정",
           style: TextStyle(fontSize: 24),
@@ -46,24 +40,27 @@ class ProfileInformationModify extends StatelessWidget {
             InformationInput(name: "E-mail", essential: true),
             SizedBox(height: 20),
             MajorConfirmButton(),
-            Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                InformationModifyButton(
-                    text: "저장",
-                    color: true,
-
-                ),
-                SizedBox(width: 10,),
-                InformationModifyButton(
-                    text: "취소",
-                    color: false,
-                  onpressed: (){
-                      Navigator.pop(context);
-                  },
-                ),
-              ],
+            Spacer(), // 빈 공간 추가
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  InformationModifyButton(
+                      text: "저장",
+                      color: true,
+                      onpressed: (){},
+                  ),
+                  SizedBox(width: 10), // 버튼 사이 여백 추가
+                  InformationModifyButton(
+                      text: "취소",
+                      color: false,
+                      onpressed: (){
+                        Navigator.pop(context);
+                      },
+                  ),
+                ],
+              ),
             ),
           ],
         ),

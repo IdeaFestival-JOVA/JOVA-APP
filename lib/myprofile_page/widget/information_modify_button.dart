@@ -23,12 +23,14 @@ class InformationModifyButton extends StatelessWidget {
         backgroundColor: MaterialStateProperty.all(
           color? Colors.grey[500]:Colors.white,
         ),
+
       ),
       onPressed: () => onpressed,
       child: Text(
         text,
         style: TextStyle(
-            color: color? Colors.white:Colors.grey[500]
+            color: color? Colors.white:Colors.grey[500],
+          fontWeight: FontWeight.bold
         ),
       ),
     );
