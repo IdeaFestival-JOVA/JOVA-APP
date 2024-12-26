@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class JobWriteProvider extends ChangeNotifier {
   String title = '';
   String mainContent = '';
-  String deadline = '';
+  String deadline = DateFormat('yyyy-MM-dd').format(DateTime.now());
   DateTime initialDay = DateTime.now();
   
   void updateTitle(String newTitle) {
