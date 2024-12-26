@@ -23,6 +23,7 @@ class JobWriteMain extends StatelessWidget {
       decoration: InputDecoration(
         hintText: text,
         border: OutlineInputBorder(),
+        focusedBorder: OutlineInputBorder(),
       ),
       onChanged: onChanged,
     );

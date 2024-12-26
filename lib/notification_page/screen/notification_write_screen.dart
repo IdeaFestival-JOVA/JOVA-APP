@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class NotificationScreen extends StatelessWidget {
-  const NotificationScreen({super.key});
+class NotificationWriteScreen extends StatelessWidget {
+  const NotificationWriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

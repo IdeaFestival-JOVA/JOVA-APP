@@ -1,48 +1,49 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
+import 'package:jovajovajova/model/jobvacancy_list_model.dart';
 
 class AddpostProvider extends ChangeNotifier {
-  List<int> dayList = [1, 2, 3, 4, 5];
-  List<String> titleList = [
-    "Iot",
-    "Design",
-    "Back_End",
-    "Front_End",
-    "Flutter",
-  ];
-  List<String> authorList = [
-    "김동현",
-    "최준영",
-    "황지훈",
-    "이상혁",
-    "이주언",
-  ];
-  List<String> deadlineList = [
-    "2024.1.1",
-    "2024.3.13",
-    "2024.5.5",
-    "2024.4.4",
-    "2024.7.29",
-    "2024.12.25",
-  ];
+  final List<int?> dayList = [];
+  final List<String> titleList = [];
+  final List<String> authorList = [];
+  final List<String> deadlineList = [];
 
-  void addJob({int? day, String? title, String? author, String? deadline}) {
-    if (day != null) {
-      dayList.add(day);
-    }
-    if (title != null) {
-      titleList.add(title);
-    }
-    if (author != null) {
-      authorList.add(author);
-    }
-    if (deadline != null) {
-      deadlineList.add(deadline);
+  Future<List<Jobvacancy>> fetchJobVacancies() async {
+    final url = Uri.parse(
+        "https://port-0-jova-backend-m0kvtwm45b2f2eb2.sel4.cloudtype.app/articles/list");
+    try {
+      final response = await http.get(url);
+      if (response.statusCode == 200) {
+        final jsonData = utf8.decode(response.bodyBytes);
+        final List<dynamic> parsedData = json.decode(jsonData);
+        return parsedData.map((data) => Jobvacancy.fromJson(data)).toList();
+      } else {
+        print("Error: Failed to fetch data. Status code: ${response.statusCode}");
+        throw Exception("Failed to fetch data");
+      }
+    } catch (e) {
+      print("Exception occurred: $e");
+      throw Exception("Error fetching job vacancies: $e");
     }
   }
 
-  List<int?> getDayList() => dayList;
-  List<String> getTitleList() => titleList;
-  List<String> getAuthorList() => authorList;
-  List<String> getDeadlineList() => deadlineList;
+  void addJob({
+    int? day,
+    String? title,
+    String? author,
+    String? deadline,
+  }) {
+    if (day != null) dayList.add(day);
+    if (title != null) titleList.add(title);
+    if (author != null) authorList.add(author);
+    if (deadline != null) deadlineList.add(deadline);
+
+    notifyListeners();
+  }
+
+  List<int?> getDayList() => List.unmodifiable(dayList);
+  List<String> getTitleList() => List.unmodifiable(titleList);
+  List<String> getAuthorList() => List.unmodifiable(authorList);
+  List<String> getDeadlineList() => List.unmodifiable(deadlineList);
 }

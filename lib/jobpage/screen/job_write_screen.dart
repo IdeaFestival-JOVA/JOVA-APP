@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:jovajovajova/jobpage/widget/write_appbar.dart';
 import 'package:provider/provider.dart';
 
 import '../../provider_class/addpost_provider.dart';
@@ -23,26 +24,7 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
     return Scaffold(
       resizeToAvoidBottomInset:false,
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        shape: Border(
-          bottom: BorderSide(
-            color: Colors.black,
-            width: 0.5,
-          )
-        ),
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(CupertinoIcons.xmark),
-        ),
-        title: const Text(
-          "구인 구직 작성",
-          style: TextStyle(fontSize: 24),
-        ),
-        centerTitle: true,
-      ),
+      appBar: WriteAppbar(title: "구인 구직 작성"),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
@@ -73,7 +55,7 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
                         lastDate: DateTime(2050),
                       );
                       if (datetime != null) {
-                        String formattedDate = DateFormat('yyyy.MM.dd').format(datetime);
+                        String formattedDate = DateFormat('yyyy-MM-dd').format(datetime);
                         jobWriteProvider.upadateday(datetime);
                         jobWriteProvider.updateDeadline(formattedDate);
                       }
