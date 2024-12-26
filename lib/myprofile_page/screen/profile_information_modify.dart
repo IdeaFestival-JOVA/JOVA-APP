@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jovajovajova/myprofile_page/widget/information_input.dart';
+import 'package:jovajovajova/myprofile_page/widget/information_modify_button.dart';
 import 'package:jovajovajova/myprofile_page/widget/major_confirm_button.dart';
-import 'package:jovajovajova/myprofile_page/widget/major_select_container.dart';
 
 class ProfileInformationModify extends StatelessWidget {
   const ProfileInformationModify({super.key});
@@ -15,8 +15,8 @@ class ProfileInformationModify extends StatelessWidget {
         shape: Border(
           bottom: BorderSide(
             color: Colors.black,
-            width: 0.5
-          )
+            width: 0.5,
+          ),
         ),
         backgroundColor: Colors.white,
         leading: IconButton(
@@ -34,19 +34,37 @@ class ProfileInformationModify extends StatelessWidget {
       body: Container(
         padding: EdgeInsets.all(20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-                'asset/image/profile.png',
-                width: 100,
+              'asset/image/profile.png',
+              width: 100,
               height: 100,
             ),
-            SizedBox(height: 20,),
-            InformationInput(name: "이름",essential: true,),
-            InformationInput(name: "깃허브",essential: false,),
-            InformationInput(name: "E-mail",essential: true,),
-            SizedBox(height: 20,),
+            SizedBox(height: 20),
+            InformationInput(name: "이름", essential: true),
+            InformationInput(name: "깃허브", essential: false),
+            InformationInput(name: "E-mail", essential: true),
+            SizedBox(height: 20),
             MajorConfirmButton(),
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                InformationModifyButton(
+                    text: "저장",
+                    color: true,
+
+                ),
+                SizedBox(width: 10,),
+                InformationModifyButton(
+                    text: "취소",
+                    color: false,
+                  onpressed: (){
+                      Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
           ],
         ),
       ),
