@@ -53,7 +53,7 @@ class ProfileInformationModify extends StatelessWidget {
                 InformationModifyButton(
                     text: "저장",
                     color: true,
-
+                  onpressed: (){},
                 ),
                 SizedBox(width: 10,),
                 InformationModifyButton(
