@@ -8,10 +8,10 @@ class AddpostProvider extends ChangeNotifier {
   final List<String> titleList = [];
   final List<String> authorList = [];
   final List<String> deadlineList = [];
+  final url = Uri.parse(
+      "https://port-0-jova-backend-m0kvtwm45b2f2eb2.sel4.cloudtype.app/articles/list");
 
   Future<List<Jobvacancy>> fetchJobVacancies() async {
-    final url = Uri.parse(
-        "https://port-0-jova-backend-m0kvtwm45b2f2eb2.sel4.cloudtype.app/articles/list");
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
@@ -40,6 +40,45 @@ class AddpostProvider extends ChangeNotifier {
     if (deadline != null) deadlineList.add(deadline);
 
     notifyListeners();
+  }
+
+  Future<void> sendpostdata
+      ({
+    required String title,
+    required String content,
+    required String category,
+    required String author,
+    required String endsAt}) async{
+      final headers = {
+        'Authorization' : 'Bearer 1414234u298374',
+        'Content-Type' : 'application/json',
+      };
+
+      final body = {
+        'title' : title,
+        'content' : content,
+        'category' : category,
+        'author' : author,
+        'endsAt' : endsAt,
+      };
+
+      try{
+        final response = await http.post(
+          url,
+          headers: headers,
+          body: jsonEncode(body),
+        );
+
+        if(response == 200){
+          print("데이터 전송 성공");
+        }
+        else{
+          print(response.statusCode);
+        }
+      }
+      catch(e){
+        print(e);
+      }
   }
 
   List<int?> getDayList() => List.unmodifiable(dayList);
