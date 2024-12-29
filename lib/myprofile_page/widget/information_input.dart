@@ -2,10 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class InformationInput extends StatelessWidget {
-  const InformationInput({super.key, required this.name, required this.essential});
+  const InformationInput({
+    super.key,
+    required this.name,
+    required this.essential,
+    required this.controller,
+    this.onchange,
+  });
 
   final String name;
   final bool essential;
+  final TextEditingController controller;
+  final Function(String)? onchange;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +40,8 @@ class InformationInput extends StatelessWidget {
         ),
         SizedBox(height: 8,),
         TextField(
+          onChanged: onchange,
+          controller: controller,
           decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10)
