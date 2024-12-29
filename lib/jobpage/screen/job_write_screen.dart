@@ -80,11 +80,12 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
             ElevatedButton(
               onPressed: jobWriteProvider.isFormValid()
                   ? () {
-                addpost.addJob(
-                  day: 1,
-                  title: jobWriteProvider.title,
-                  author: "황지훈",
-                  deadline: jobWriteProvider.deadline,
+                addpost.sendpostdata(
+                    title: jobWriteProvider.title,
+                    content: jobWriteProvider.mainContent,
+                    category: "BackEnd",
+                    author: "황지훈",
+                    endsAt: jobWriteProvider.deadline,
                 );
                 print('테스트 마감 기한${addpost.deadlineList} ${addpost.dayList}');
                 jobWriteProvider.title = "";
