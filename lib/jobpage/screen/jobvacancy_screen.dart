@@ -12,11 +12,30 @@ class JobvacancyScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
+        centerTitle: true,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(author)
+          Text(author),
+          Spacer(),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))
+                  ),
+                  backgroundColor: MaterialStateProperty.all(
+                      Colors.grey[500],
+                  ),
+                ),
+                onPressed: (){},
+                child: Text(
+                  "지원하기"
+                ),
+            ),
+          )
         ],
       ),
     );
