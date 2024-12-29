@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jovajovajova/jobpage/screen/jobvacancy_screen.dart';
 
 class JobListPost extends StatelessWidget {
   const JobListPost({
@@ -19,8 +20,13 @@ class JobListPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10),
+    return InkWell(
+      onTap: (){
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => JobvacancyScreen(title: title, author: author))
+        );
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
