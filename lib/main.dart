@@ -3,9 +3,12 @@ import 'package:jovajovajova/jobpage/screen/job_screen.dart';
 import 'package:jovajovajova/login_screen.dart';
 import 'package:jovajovajova/mainpage/screen/main_screen.dart';
 import 'package:jovajovajova/myprofile_page/screen/myprofile_screen.dart';
-import 'package:jovajovajova/provider_class/addpost_provider.dart';
+import 'package:jovajovajova/provider_class/addmajor_provider.dart';
+import 'package:jovajovajova/provider_class/jobvancacy_post_provider.dart';
 import 'package:jovajovajova/provider_class/jobwrite_provider.dart';
 import 'package:jovajovajova/notification_page/screen/notification_screen.dart';
+import 'package:jovajovajova/provider_class/myprofile_provider.dart';
+import 'package:jovajovajova/provider_class/notification_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -24,6 +27,9 @@ void main(){
         providers: [
           ChangeNotifierProvider(create: (_) => AddpostProvider()),
           ChangeNotifierProvider(create: (_) => JobWriteProvider()),
+          ChangeNotifierProvider(create: (_) => MyProfile()),
+          ChangeNotifierProvider(create: (_) => Major()),
+          ChangeNotifierProvider(create: (_) => NotificationProvider()),
         ],
       child: Main(),
     )
@@ -46,6 +52,7 @@ class MyApp extends StatelessWidget {
             providers: [
               ChangeNotifierProvider(create: (_) => AddpostProvider()),
               ChangeNotifierProvider(create: (_) => JobWriteProvider()),
+              ChangeNotifierProvider(create: (_) => MyProfile())
             ],
           child: Main(),
         ),

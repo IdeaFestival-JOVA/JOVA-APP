@@ -1,26 +1,29 @@
 class Jobvacancy{
 
-  final int? article;
+  final int? article_id;
   final String title;
   final String content;
   final String category;
   final String createdAt;
+  final String author;
 
   Jobvacancy({
-    required this.article,
+    required this.article_id,
     required this.title,
     required this.content,
     required this.category,
-    required this.createdAt
+    required this.createdAt,
+    required this.author,
   });
 
   factory Jobvacancy.fromJson(Map<String,dynamic> json){
     return Jobvacancy(
-      article: json['article'],
+      article_id: json['article-id'],
       title: json['title'],
       content: json['content'],
       category: json['category'],
       createdAt: json['createdAt'],
+      author: json['author'],
     );
   }
 }

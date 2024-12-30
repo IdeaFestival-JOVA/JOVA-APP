@@ -1,23 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jovajovajova/mainpage/widget/post_screen.dart';
+import 'package:jovajovajova/jobpage/screen/jobvacancy_screen.dart';
+
 
 class ListPostWidget extends StatelessWidget {
   const ListPostWidget({
     super.key,
     required this.author,
     required this.title,
-    required this.deadline
+    required this.deadline,
+    required this.content,
+    required this.post
   });
 
 
   final String author;
   final String title;
   final String deadline;
+  final String content;
+  final bool post;
 
   Widget textstyle(String text){
+
+    String displayText =
+    text.length > 5 ? '${text.substring(0, 5)}...' : text;
+
     return Text(
-      text,
+      displayText,
       style: const TextStyle(
         color: Colors.black,
         fontSize: 18,
@@ -29,10 +38,18 @@ class ListPostWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
         onPressed: (){
-          Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => PostScreen())
-          );
+          post ? Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) =>
+                JobvacancyScreen(
+                  title: title,
+                  author: author,
+                  content: content,
+                ),
+            ),
+          )
+              :
+              print("");
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
