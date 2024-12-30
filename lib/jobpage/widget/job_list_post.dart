@@ -8,13 +8,14 @@ class JobListPost extends StatelessWidget {
     required this.day,
     required this.title,
     required this.author,
-    required this.deadline
+    required this.deadline, required this.content
   });
 
   final int day;
   final String title;
   final String author;
   final String deadline;
+  final String content;
 
 
 
@@ -24,7 +25,7 @@ class JobListPost extends StatelessWidget {
       onTap: (){
         Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => JobvacancyScreen(title: title, author: author))
+            MaterialPageRoute(builder: (context) => JobvacancyScreen(title: title, author: author, content: content,))
         );
       },
       child: Column(

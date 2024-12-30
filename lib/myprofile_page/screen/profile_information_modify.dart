@@ -73,10 +73,11 @@ class ProfileInformationModify extends StatelessWidget {
                     text: "저장",
                     color: true,
                     onpressed: () {
-                      myprofileProvider.updateName();
-                      myprofileProvider.updateGithub();
-                      myprofileProvider.updateEmail();
-                      myprofileProvider.backscreen(context);
+                      myprofileProvider.check() ?
+                      myprofileProvider.totalupdate()
+                      : AlertDialog(
+                        title: Text("이름 또는 이메일을 입력해주세요"),
+                      );
                     },
                   ),
                   const SizedBox(width: 10),

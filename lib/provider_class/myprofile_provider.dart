@@ -9,6 +9,11 @@ class MyProfile extends ChangeNotifier {
   String tempGithub = "";
   String tempEmail = "";
 
+  bool check(){
+    return tempName.isNotEmpty && tempEmail.isNotEmpty;
+  }
+
+
   void updateName() {
     if (tempName.isNotEmpty) {
       name = tempName;
@@ -29,6 +34,13 @@ class MyProfile extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void totalupdate(){
+    updateEmail();
+    updateGithub();
+    updateName();
+  }
+
 
   void backscreen(BuildContext context) {
     tempName = "";

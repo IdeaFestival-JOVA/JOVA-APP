@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class JobvacancyScreen extends StatelessWidget {
-  const JobvacancyScreen({super.key, required this.title, required this.author});
+  const JobvacancyScreen({super.key, required this.title, required this.author, required this.content});
 
   final String title;
   final String author;
+  final String content;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +19,7 @@ class JobvacancyScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(author),
+          Text(content),
           Spacer(),
           Align(
             alignment: Alignment.bottomRight,

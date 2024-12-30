@@ -12,7 +12,7 @@ class MajorConfirmButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final addmajor = Provider.of<Major>(context);
+    Provider.of<Major>(context);
     return  Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -54,6 +54,7 @@ class MajorConfirmButton extends StatelessWidget {
               ),
               items: majors,
               onSubmit: (selectedItem) {
+                print(selectedItem);
                 String selectedMajor = (majors[selectedItem]).data ?? "선택 안됨";
                 context.read<Major>().add_major(major: selectedMajor);
               },

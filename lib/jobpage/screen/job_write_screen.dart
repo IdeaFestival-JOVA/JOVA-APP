@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:jovajovajova/jobpage/widget/write_appbar.dart';
 import 'package:provider/provider.dart';
 
-import '../../provider_class/addpost_provider.dart';
+import '../../provider_class/jobvancacy_post_provider.dart';
 import '../../provider_class/jobwrite_provider.dart';
 import '../widget/job_write_main.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jovajovajova/main.dart';
 import 'package:jovajovajova/model/jobvacancy_list_model.dart';
-import 'package:jovajovajova/provider_class/addpost_provider.dart';
+import 'package:jovajovajova/provider_class/jobvancacy_post_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:jovajovajova/jobpage/screen/job_write_screen.dart';
 import 'package:jovajovajova/jobpage/widget/job_list_post.dart';
@@ -41,8 +41,9 @@ class JobScreen extends StatelessWidget {
                         return JobListPost(
                           day: 1,
                           title: job.title,
-                          author: "이주언",
+                          author: job.author,
                           deadline: job.createdAt,
+                          content: job.content,
                         );
                       },
                       separatorBuilder: (BuildContext context, int index) {
