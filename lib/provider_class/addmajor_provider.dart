@@ -5,14 +5,12 @@ class Major extends ChangeNotifier{
 
   List<String> majorList =[
     '프론트엔드',
-    '백엔드',
-    '플러터',
   ];
 
-  void add_major({String? major}){
-    if(major != null){
+  void add_major({String? major}) {
+    if (major != null) {
       majorList.add(major);
-      majorList.toSet().toList();
+      majorList = majorList.toSet().toList();
       notifyListeners();
     }
   }

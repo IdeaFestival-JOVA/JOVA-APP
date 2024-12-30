@@ -12,7 +12,7 @@ class MajorConfirmButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    Provider.of<Major>(context);
+    final major = Provider.of<Major>(context,listen: true);
     return  Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -43,7 +43,6 @@ class MajorConfirmButton extends StatelessWidget {
               Text("Ios"),
               Text("DB"),
             ];
-
             BottomPicker(
               pickerTitle: Text(
                   "전공 선택",
@@ -56,9 +55,18 @@ class MajorConfirmButton extends StatelessWidget {
               onSubmit: (selectedItem) {
                 print(selectedItem);
                 String selectedMajor = (majors[selectedItem]).data ?? "선택 안됨";
-                context.read<Major>().add_major(major: selectedMajor);
+                major.add_major(major: selectedMajor);
               },
-              buttonContent: Text("확인"),
+              titleAlignment: Alignment.center,
+              buttonContent: Text(
+                  "확인",
+                style: TextStyle(
+                  color: Colors.white
+                ),
+              ),
+              buttonStyle: BoxDecoration(
+                color: Colors.black,
+              ),
               dismissable: true,
             ).show(context);
           },

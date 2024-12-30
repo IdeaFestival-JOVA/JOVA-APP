@@ -8,12 +8,36 @@ class AddpostProvider extends ChangeNotifier {
   final List<String> titleList = [];
   final List<String> authorList = [];
   final List<String> deadlineList = [];
-  final url = Uri.parse(
+  String token = "";
+  final geturl = Uri.parse(
       "https://port-0-jova-backend-m0kvtwm45b2f2eb2.sel4.cloudtype.app/articles/list");
+  final posturl = Uri.parse("https://port-0-jova-backend-m0kvtwm45b2f2eb2.sel4.cloudtype.app/articles");
+
+  Future<void> fetchTokenWithPost() async {
+    final url =
+        "https://port-0-jova-backend-m0kvtwm45b2f2eb2.sel4.cloudtype.app/auth/key?keyInput=aGJojaL6CSEzapYxaK24DLAmBp1mUaQ8VvHxyOufDU=";
+
+    try {
+      final response = await http.post(
+        Uri.parse(url),
+      );
+
+      if (response.statusCode == 200) {
+        print("Token fetched successfully: ${response.body}");
+        token = response.body;
+      } else {
+        print("Failed to fetch token. Status code: ${response.statusCode}");
+        print("Response body: ${response.body}");
+      }
+    } catch (e) {
+      print("Error occurred while fetching token: $e");
+    }
+  }
+
 
   Future<List<Jobvacancy>> fetchJobVacancies() async {
     try {
-      final response = await http.get(url);
+      final response = await http.get(geturl);
       if (response.statusCode == 200) {
         final jsonData = utf8.decode(response.bodyBytes);
         final List<dynamic> parsedData = json.decode(jsonData);
@@ -28,29 +52,15 @@ class AddpostProvider extends ChangeNotifier {
     }
   }
 
-  void addJob({
-    int? day,
-    String? title,
-    String? author,
-    String? deadline,
-  }) {
-    if (day != null) dayList.add(day);
-    if (title != null) titleList.add(title);
-    if (author != null) authorList.add(author);
-    if (deadline != null) deadlineList.add(deadline);
-
-    notifyListeners();
-  }
-
   Future<void> sendpostdata
       ({
     required String title,
     required String content,
-    required String category,
+    required int category,
     required String author,
-    required String endsAt}) async{
+    }) async{
       final headers = {
-        'Authorization' : 'Bearer 1414234u298374',
+        'Authorization' : 'Bearer ${token}',
         'Content-Type' : 'application/json',
       };
 
@@ -59,21 +69,22 @@ class AddpostProvider extends ChangeNotifier {
         'content' : content,
         'category' : category,
         'author' : author,
-        'endsAt' : endsAt,
       };
 
       try{
         final response = await http.post(
-          url,
+          posturl,
           headers: headers,
           body: jsonEncode(body),
         );
 
         if(response == 200){
           print("데이터 전송 성공");
+          notifyListeners();
         }
         else{
-          print(response.statusCode);
+          print("Failed to fetch token. Status code: ${response.statusCode}");
+          print("Response body: ${response.body}");
         }
       }
       catch(e){

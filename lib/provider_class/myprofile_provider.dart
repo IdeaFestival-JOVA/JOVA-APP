@@ -35,10 +35,11 @@ class MyProfile extends ChangeNotifier {
     notifyListeners();
   }
 
-  void totalupdate(){
+  void totalupdate(BuildContext context){
     updateEmail();
     updateGithub();
     updateName();
+    backscreen(context);
   }
 
 

@@ -5,13 +5,11 @@ import 'package:jovajovajova/jobpage/screen/jobvacancy_screen.dart';
 class JobListPost extends StatelessWidget {
   const JobListPost({
     super.key,
-    required this.day,
     required this.title,
     required this.author,
     required this.deadline, required this.content
   });
 
-  final int day;
   final String title;
   final String author;
   final String deadline;
@@ -32,24 +30,18 @@ class JobListPost extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "D-$day",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18
-            ),
-          ),
-          Text(
             title,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 36,
             ),
           ),
+          SizedBox(height: 10,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                deadline,
+                "마감일:${deadline}",
                 style: const TextStyle(
                   color: Colors.grey,
                   fontSize: 12,

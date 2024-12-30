@@ -5,7 +5,6 @@ class Jobvacancy{
   final String content;
   final String category;
   final String createdAt;
-  final String endsAt;
   final String author;
 
   Jobvacancy({
@@ -14,7 +13,6 @@ class Jobvacancy{
     required this.content,
     required this.category,
     required this.createdAt,
-    required this.endsAt,
     required this.author,
   });
 
@@ -25,7 +23,6 @@ class Jobvacancy{
       content: json['content'],
       category: json['category'],
       createdAt: json['createdAt'],
-      endsAt: json['endsAt'],
       author: json['author'],
     );
   }

@@ -2,24 +2,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:jovajovajova/jobpage/widget/write_appbar.dart';
+import 'package:jovajovajova/provider_class/myprofile_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../provider_class/jobvancacy_post_provider.dart';
 import '../../provider_class/jobwrite_provider.dart';
 import '../widget/job_write_main.dart';
 
-class JobWriteScreen extends StatefulWidget {
-  const JobWriteScreen({super.key});
+class WriteScreen extends StatefulWidget {
+  const WriteScreen({super.key});
 
   @override
-  State<JobWriteScreen> createState() => _JobWriteScreenState();
+  State<WriteScreen> createState() => _WriteScreenState();
 }
 
-class _JobWriteScreenState extends State<JobWriteScreen> {
+class _WriteScreenState extends State<WriteScreen> {
   @override
   Widget build(BuildContext context) {
     final addpost = Provider.of<AddpostProvider>(context, listen: false);
     final jobWriteProvider = Provider.of<JobWriteProvider>(context);
+    final myprofile = Provider.of<MyProfile>(context);
 
     return Scaffold(
       resizeToAvoidBottomInset:false,
@@ -39,35 +41,6 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
               },
             ),
             const SizedBox(height: 20),
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(),
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () async {
-                      final DateTime? datetime = await showDatePicker(
-                        context: context,
-                        firstDate: DateTime.now(),
-                        lastDate: DateTime(2050),
-                      );
-                      if (datetime != null) {
-                        String formattedDate = DateFormat('yyyy-MM-dd').format(datetime);
-                        jobWriteProvider.upadateday(datetime);
-                        jobWriteProvider.updateDeadline(formattedDate);
-                      }
-                    },
-                    icon: const Icon(CupertinoIcons.calendar),
-                  ),
-                  Text("${jobWriteProvider.initialDay.year} - ${jobWriteProvider.initialDay.month} - ${jobWriteProvider.initialDay.day}"),
-                  const Text("마감날짜"),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
             JobWriteMain(
               controller: TextEditingController(text: jobWriteProvider.mainContent),
               maxline: 15,
@@ -80,14 +53,13 @@ class _JobWriteScreenState extends State<JobWriteScreen> {
             ElevatedButton(
               onPressed: jobWriteProvider.isFormValid()
                   ? () {
+                addpost.fetchTokenWithPost();
                 addpost.sendpostdata(
                     title: jobWriteProvider.title,
                     content: jobWriteProvider.mainContent,
-                    category: "BackEnd",
-                    author: "황지훈",
-                    endsAt: jobWriteProvider.deadline,
+                    category: 1,
+                    author: myprofile.name,
                 );
-                print('테스트 마감 기한${addpost.deadlineList} ${addpost.dayList}');
                 jobWriteProvider.title = "";
                 jobWriteProvider.mainContent = "";
                 Navigator.pop(context);

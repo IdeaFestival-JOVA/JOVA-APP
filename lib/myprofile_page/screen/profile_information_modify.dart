@@ -11,7 +11,7 @@ class ProfileInformationModify extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myprofileProvider = Provider.of<MyProfile>(context);
+    final myprofileProvider = Provider.of<MyProfile>(context,listen: true);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -74,7 +74,7 @@ class ProfileInformationModify extends StatelessWidget {
                     color: true,
                     onpressed: () {
                       myprofileProvider.check() ?
-                      myprofileProvider.totalupdate()
+                      myprofileProvider.totalupdate(context)
                       : AlertDialog(
                         title: Text("이름 또는 이메일을 입력해주세요"),
                       );
@@ -86,6 +86,7 @@ class ProfileInformationModify extends StatelessWidget {
                     color: false,
                     onpressed: () {
                       myprofileProvider.backscreen(context);
+
                     },
                   ),
                 ],

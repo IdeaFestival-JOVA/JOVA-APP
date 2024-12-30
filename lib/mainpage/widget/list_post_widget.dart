@@ -21,8 +21,12 @@ class ListPostWidget extends StatelessWidget {
   final bool post;
 
   Widget textstyle(String text){
+
+    String displayText =
+    text.length > 5 ? '${text.substring(0, 5)}...' : text;
+
     return Text(
-      text,
+      displayText,
       style: const TextStyle(
         color: Colors.black,
         fontSize: 18,

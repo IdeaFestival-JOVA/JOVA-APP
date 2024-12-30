@@ -109,7 +109,7 @@ class MainContainer extends StatelessWidget {
                             return ListPostWidget(
                               title: job.title,
                               author: job.author,
-                              deadline: job.endsAt,
+                              deadline: job.createdAt,
                               content: job.content,
                               post: true,
                             );
