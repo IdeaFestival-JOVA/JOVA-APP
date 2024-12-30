@@ -7,10 +7,11 @@ import 'list_post_widget.dart';
 
 class MainContainer extends StatelessWidget {
   final String title;
+  final bool Bool;
 
   const MainContainer({
     super.key,
-    required this.title,
+    required this.title, required this.Bool,
   });
 
   @override
@@ -30,6 +31,8 @@ class MainContainer extends StatelessWidget {
           const SizedBox(height: 20),
           Expanded(
             child: Container(
+              width: 1000,
+              height: 200,
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -42,7 +45,8 @@ class MainContainer extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Consumer<AddpostProvider>(
+              child: Bool ? Text("공지") :
+              Consumer<AddpostProvider>(
                 builder: (context, provider, _) {
                   return FutureBuilder(
                     future: provider.fetchJobVacancies(),
