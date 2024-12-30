@@ -24,10 +24,12 @@ class _MainScreenState extends State<MainScreen>{
             children: [
               MainContainer(
                 title: "구인구직",
+                Bool: false,
               ),
               const SizedBox(height: 40),
               MainContainer(
                 title: "공지",
+                Bool: true,
               ),
             ],
           ),
