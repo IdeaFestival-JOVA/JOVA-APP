@@ -9,10 +9,11 @@ class Major extends ChangeNotifier{
     '플러터',
   ];
 
-  void addmajor({String? major}){
+  void add_major({String? major}){
     if(major != null){
       majorList.add(major);
       majorList.toSet().toList();
+      notifyListeners();
     }
   }
 }
