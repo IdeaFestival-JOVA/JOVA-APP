@@ -19,10 +19,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize: const Size(200, 80),
-        child: MainAppbar(),
-      ),
+      appBar: MainAppbar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Column(
