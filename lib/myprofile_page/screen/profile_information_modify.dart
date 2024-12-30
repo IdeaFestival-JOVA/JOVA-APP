@@ -1,4 +1,6 @@
+import 'package:bottom_picker/bottom_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:jovajovajova/myprofile_page/widget/major_confirm_button.dart';
 import 'package:provider/provider.dart';
 import '../../provider_class/myprofile_provider.dart';
 import '../widget/information_input.dart';
@@ -28,6 +30,7 @@ class ProfileInformationModify extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.all(20),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
               'asset/image/profile.png',
@@ -59,6 +62,7 @@ class ProfileInformationModify extends StatelessWidget {
                 myprofileProvider.tempEmail = value;
               },
             ),
+            MajorConfirmButton(),
             const Spacer(),
             Align(
               alignment: Alignment.bottomRight,

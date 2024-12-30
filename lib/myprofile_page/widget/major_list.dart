@@ -10,6 +10,9 @@ class MajorList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final add_major = Provider.of<Major>(context,listen: true);
+
     return Consumer<Major>(
       builder: (context,provider,_){
         return SizedBox(

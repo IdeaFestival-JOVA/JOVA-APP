@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:bottom_picker/bottom_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,24 +33,34 @@ class MajorConfirmButton extends StatelessWidget {
             ),
           ),
           onPressed: () {
+            final List<Text> majors = [
+              Text("프론트 엔드"),
+              Text("백엔드"),
+              Text("디자인"),
+              Text("DevOps"),
+              Text("AI"),
+              Text("Aos"),
+              Text("Ios"),
+              Text("DB"),
+            ];
+
             BottomPicker(
-              pickerTitle: Text("전공 선택"),
-              items: [
-                Text("프론트 엔드"),
-                Text("백엔드"),
-                Text("디자인"),
-                Text("DevOps"),
-                Text("AI"),
-                Text("Aos"),
-                Text("Ios"),
-                Text("DB"),
-              ],
+              pickerTitle: Text(
+                  "전공 선택",
+               style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              items: majors,
               onSubmit: (selectedItem) {
-                addmajor.add_major(major: selectedItem);
+                String selectedMajor = (majors[selectedItem]).data ?? "선택 안됨";
+                context.read<Major>().add_major(major: selectedMajor);
               },
+              buttonContent: Text("확인"),
+              dismissable: true,
             ).show(context);
           },
-
           child: Text(
             "전공 선택",
             style: TextStyle(

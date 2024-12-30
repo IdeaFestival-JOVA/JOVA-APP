@@ -15,7 +15,7 @@ class MyprofileScreen extends StatefulWidget {
 class _MyprofileScreenState extends State<MyprofileScreen> {
   @override
   Widget build(BuildContext context) {
-    final myprofileProvider = Provider.of<MyProfile>(context);
+    final myprofileProvider = Provider.of<MyProfile>(context,listen: true);
 
     return Scaffold(
       backgroundColor: Colors.white,

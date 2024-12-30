@@ -5,7 +5,6 @@ class MyProfile extends ChangeNotifier {
   String github = "aiden30015";
   String email = "s24068@gsm.hs.kr";
 
-  // Temporary fields for editing
   String tempName = "";
   String tempGithub = "";
   String tempEmail = "";
