@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class JobWriteMain extends StatelessWidget {
@@ -18,6 +17,8 @@ class JobWriteMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      
+      showCursor: true,
       controller: controller,
       maxLines: maxline,
       decoration: InputDecoration(

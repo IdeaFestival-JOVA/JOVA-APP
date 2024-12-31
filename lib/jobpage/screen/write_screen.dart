@@ -32,39 +32,43 @@ class _WriteScreenState extends State<WriteScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            JobWriteMain(
-              controller: TextEditingController(text: jobWriteProvider.title),
-              maxline: 1,
-              text: "제목",
-              onChanged: (value) {
-                jobWriteProvider.updateTitle(value);
-              },
-            ),
-            const SizedBox(height: 20),
-            JobWriteMain(
-              controller: TextEditingController(text: jobWriteProvider.mainContent),
-              maxline: 15,
-              text: "내용",
-              onChanged: (value) {
-                jobWriteProvider.updateMainContent(value);
-              },
+            Column(
+              children: [
+                JobWriteMain(
+                  controller: TextEditingController(text: jobWriteProvider.title),
+                  maxline: 1,
+                  text: "제목",
+                  onChanged: (value) {
+                    jobWriteProvider.title = value;
+                    print(jobWriteProvider.title);
+                  },
+                ),
+                const SizedBox(height: 20),
+                JobWriteMain(
+                  controller: TextEditingController(text: jobWriteProvider.mainContent),
+                  maxline: 15,
+                  text: "내용",
+                  onChanged: (value) {
+                    jobWriteProvider.mainContent = value;
+                  },
+                ),
+              ],
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: jobWriteProvider.isFormValid()
-                  ? () {
-                addpost.fetchTokenWithPost();
-                addpost.sendpostdata(
+              onPressed: () async {
+                if (jobWriteProvider.isFormValid()) {
+                  await addpost.fetchTokenWithPost();
+                  await addpost.sendpostdata(
                     title: jobWriteProvider.title,
                     content: jobWriteProvider.mainContent,
                     category: 1,
                     author: myprofile.name,
-                );
-                jobWriteProvider.title = "";
-                jobWriteProvider.mainContent = "";
-                Navigator.pop(context);
-              }
-                  : null,
+                  );
+                  jobWriteProvider.backscreen(context);
+                }
+              },
+
               child: const Text("작성하기"),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(

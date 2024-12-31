@@ -31,7 +31,7 @@ class MyprofileInformation extends StatelessWidget {
         ),
         Container(
           width: 410,
-          height: 600,
+          height: 500,
           padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
             border: Border.all(
@@ -43,23 +43,25 @@ class MyprofileInformation extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-                Container(
-                  alignment: Alignment.center,
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        "asset/image/profile.png",
-                        width: 130,
-                        height: 130,
-                      ),
-                      Text(
-                        name,
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          "asset/image/profile.png",
+                          width: 130,
+                          height: 130,
                         ),
-                      ),
-                    ],
+                        Text(
+                          name,
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Container(
@@ -77,7 +79,6 @@ class MyprofileInformation extends StatelessWidget {
                     ],
                   ),
                 ),
-              Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
