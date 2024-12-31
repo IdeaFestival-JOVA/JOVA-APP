@@ -9,7 +9,6 @@ class InformationInput extends StatelessWidget {
     required this.controller,
     this.onchange,
     this.keyboardtype = TextInputType.text,
-    this.validator,
   });
 
   final String name;
@@ -17,7 +16,6 @@ class InformationInput extends StatelessWidget {
   final TextEditingController controller;
   final Function(String)? onchange;
   final TextInputType keyboardtype;
-  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +41,8 @@ class InformationInput extends StatelessWidget {
           ),
         ),
         SizedBox(height: 8),
-        TextFormField(
-          validator: validator,
-          enableInteractiveSelection: false,
+        TextField(
+          cursorColor: Colors.black,
           showCursor: true,
           onChanged: onchange,
           controller: controller,

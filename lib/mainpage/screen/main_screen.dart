@@ -24,13 +24,13 @@ class _MainScreenState extends State<MainScreen>{
           body:  Column(
             children: [
               MainContainer(
-                title: "구인구직",
-                Bool: false,
+                title: "공지",
+                Bool: true,
               ),
               const SizedBox(height: 40),
               MainContainer(
-                title: "공지",
-                Bool: true,
+                title: "구인구직",
+                Bool: false,
               ),
             ],
           ),
