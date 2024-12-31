@@ -4,10 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:jovajovajova/model/jobvacancy_list_model.dart';
 
 class AddpostProvider extends ChangeNotifier {
-  final List<int?> dayList = [];
-  final List<String> titleList = [];
-  final List<String> authorList = [];
-  final List<String> deadlineList = [];
   String token = "";
   final geturl = Uri.parse(
       "https://port-0-jova-backend-m0kvtwm45b2f2eb2.sel4.cloudtype.app/articles/list");
@@ -92,8 +88,4 @@ class AddpostProvider extends ChangeNotifier {
       }
   }
 
-  List<int?> getDayList() => List.unmodifiable(dayList);
-  List<String> getTitleList() => List.unmodifiable(titleList);
-  List<String> getAuthorList() => List.unmodifiable(authorList);
-  List<String> getDeadlineList() => List.unmodifiable(deadlineList);
 }

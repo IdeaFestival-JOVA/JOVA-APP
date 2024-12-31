@@ -39,6 +39,7 @@ class ProfileInformationModify extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             InformationInput(
+              keyboardtype: TextInputType.name,
               name: "이름",
               essential: true,
               controller: TextEditingController(text: myprofileProvider.tempName),
@@ -55,6 +56,7 @@ class ProfileInformationModify extends StatelessWidget {
               },
             ),
             InformationInput(
+              keyboardtype: TextInputType.emailAddress,
               name: "E-mail",
               essential: true,
               controller: TextEditingController(text: myprofileProvider.tempEmail),
