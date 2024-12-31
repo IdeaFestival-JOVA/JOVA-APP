@@ -33,10 +33,12 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            MyprofileInformation(
-              name: myprofileProvider.name,
-              github: myprofileProvider.github,
-              email: myprofileProvider.email,
+            Flexible(
+              child: MyprofileInformation(
+                name: myprofileProvider.name,
+                github: myprofileProvider.github,
+                email: myprofileProvider.email,
+              ),
             ),
           ],
         ),

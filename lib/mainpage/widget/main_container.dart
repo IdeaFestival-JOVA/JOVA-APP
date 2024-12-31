@@ -13,7 +13,8 @@ class MainContainer extends StatelessWidget {
 
   const MainContainer({
     super.key,
-    required this.title, required this.Bool,
+    required this.title,
+    required this.Bool,
   });
 
   @override
@@ -102,6 +103,7 @@ class MainContainer extends StatelessWidget {
                         );
                       } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                         final jobs = snapshot.data!;
+                        jobs.sort((a, b) => b.createdAt.compareTo(a.createdAt));
                         return ListView.separated(
                           itemCount: jobs.length > 4 ? 4: jobs.length,
                           itemBuilder: (context, index) {
@@ -109,7 +111,7 @@ class MainContainer extends StatelessWidget {
                             return ListPostWidget(
                               title: job.title,
                               author: job.author,
-                              deadline: job.createdAt,
+                              deadline: job.createdAt ,
                               content: job.content,
                               post: true,
                             );

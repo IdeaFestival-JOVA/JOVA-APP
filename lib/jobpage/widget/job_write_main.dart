@@ -17,7 +17,7 @@ class JobWriteMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      
+      cursorColor: Colors.black,
       showCursor: true,
       controller: controller,
       maxLines: maxline,

@@ -12,6 +12,5 @@ class JobWriteProvider extends ChangeNotifier {
   void backscreen(BuildContext context){
     title = "";
     mainContent = "";
-    Navigator.pop(context);
   }
 }

@@ -58,6 +58,7 @@ class _WriteScreenState extends State<WriteScreen> {
             ElevatedButton(
               onPressed: () async {
                 if (jobWriteProvider.isFormValid()) {
+                  Navigator.pop(context);
                   await addpost.fetchTokenWithPost();
                   await addpost.sendpostdata(
                     title: jobWriteProvider.title,
