@@ -42,6 +42,11 @@ class MajorConfirmButton extends StatelessWidget {
               Text("Aos"),
               Text("Ios"),
               Text("DB"),
+              Text("IT"),
+              Text("클라우드"),
+              Text("크로스 플랫폼"),
+              Text("게임 개발"),
+              Text("모바일 로봇틱스"),
             ];
             BottomPicker(
               pickerTitle: Text(
