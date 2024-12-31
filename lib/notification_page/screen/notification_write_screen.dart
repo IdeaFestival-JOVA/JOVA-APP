@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:jovajovajova/provider_class/notification_provider.dart';
 import 'package:provider/provider.dart';
-
 import '../../jobpage/widget/job_write_main.dart';
 import '../../jobpage/widget/write_appbar.dart';
-import '../../provider_class/myprofile_provider.dart';
 
 class NotificationWriteScreen extends StatelessWidget {
   const NotificationWriteScreen({super.key});
@@ -15,7 +12,6 @@ class NotificationWriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final notificationProvider = Provider.of<NotificationProvider>(context);
-    final myprofile = Provider.of<MyProfile>(context,listen: true);
 
     return Scaffold(
       resizeToAvoidBottomInset:false,
