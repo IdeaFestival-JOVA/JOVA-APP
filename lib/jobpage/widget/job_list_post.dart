@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:jovajovajova/jobpage/screen/jobvacancy_screen.dart';
 
 class JobListPost extends StatelessWidget {
@@ -19,6 +20,12 @@ class JobListPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+    String originalDate = deadline;
+    DateTime dateTime = DateTime.parse(originalDate);
+    String formattedDateTime = DateFormat('yyyy-MM-dd').format(dateTime);
+
     return InkWell(
       onTap: (){
         Navigator.push(
@@ -41,7 +48,7 @@ class JobListPost extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "마감일:${deadline}",
+                "작성일:${formattedDateTime}",
                 style: const TextStyle(
                   color: Colors.grey,
                   fontSize: 12,

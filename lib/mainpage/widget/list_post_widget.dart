@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:jovajovajova/jobpage/screen/jobvacancy_screen.dart';
 
 
@@ -36,6 +37,12 @@ class ListPostWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    String originalDate = deadline;
+    DateTime dateTime = DateTime.parse(originalDate);
+    String formattedDateTime = DateFormat('yyyy-MM-dd').format(dateTime);
+
+
     return TextButton(
         onPressed: (){
           post ? Navigator.push(
@@ -57,7 +64,7 @@ class ListPostWidget extends StatelessWidget {
             textstyle(author),
             textstyle(title),
             Text(
-                deadline,
+                formattedDateTime,
               style: TextStyle(
                 color: Colors.black
               ),
