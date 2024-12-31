@@ -86,7 +86,6 @@ class ProfileInformationModify extends StatelessWidget {
                     color: false,
                     onpressed: () {
                       myprofileProvider.backscreen(context);
-
                     },
                   ),
                 ],

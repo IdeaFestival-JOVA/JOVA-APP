@@ -14,4 +14,9 @@ class Major extends ChangeNotifier{
       notifyListeners();
     }
   }
+
+  void remove_major({String? major}){
+    majorList.remove(major);
+    notifyListeners();
+  }
 }

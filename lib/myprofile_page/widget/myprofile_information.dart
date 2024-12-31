@@ -31,7 +31,7 @@ class MyprofileInformation extends StatelessWidget {
         ),
         Container(
           width: 410,
-          height: 450,
+          height: 600,
           padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
             border: Border.all(
@@ -55,7 +55,7 @@ class MyprofileInformation extends StatelessWidget {
                       Text(
                         name,
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 24,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -69,7 +69,7 @@ class MyprofileInformation extends StatelessWidget {
                       Text(
                         "깃허브\n${github}\n\nE-mail\n${email}\n\n전공",
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -77,6 +77,7 @@ class MyprofileInformation extends StatelessWidget {
                     ],
                   ),
                 ),
+              Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [

@@ -13,17 +13,25 @@ class MajorList extends StatelessWidget {
 
     return Consumer<Major>(
       builder: (context, provider, _) {
-        print(major.majorList);
+        print(provider.majorList);
         return SizedBox(
           width: 200,
           child: Wrap(
             spacing: 8,
-            children: provider.majorList
-                .map((major) => Text(major, style: TextStyle(fontSize: 14)))
-                .toList(),
+            children: provider.majorList.map((major) {
+              return Chip(
+                label: Text(major, style: TextStyle(fontSize: 14)),
+                deleteIcon: Icon(Icons.close, size: 16),
+                onDeleted: () {
+                  // Remove the selected major from the list
+                  provider.remove_major(major:major);
+                },
+              );
+            }).toList(),
           ),
         );
       },
     );
+
   }
 }
